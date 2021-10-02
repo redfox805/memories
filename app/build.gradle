@@ -47,7 +47,4 @@ dependencies {
     implementation dp_inject_libraries
 
     api api_libraries
-
-    testImplementation test_libraries
-    androidTestImplementation andro_test_libraries
 }
