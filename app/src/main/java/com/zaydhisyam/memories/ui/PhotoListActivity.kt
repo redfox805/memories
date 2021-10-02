@@ -1,5 +1,6 @@
 package com.zaydhisyam.memories.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -30,7 +31,10 @@ class PhotoListActivity : AppCompatActivity() {
         val rvAdapter = PhotoListAdapter()
 
         rvAdapter.onViewHolderClick = { selectedPhoto ->
-            Toast.makeText(this, selectedPhoto.toString(), Toast.LENGTH_SHORT).show()
+            Intent(this, PhotoViewActivity::class.java).apply {
+                putExtra(PhotoViewActivity.EXTRA_PHOTO, selectedPhoto)
+                startActivity(this)
+            }
         }
 
         with(binding.rvPhotoList) {

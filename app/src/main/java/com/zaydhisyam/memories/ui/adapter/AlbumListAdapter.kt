@@ -43,7 +43,7 @@ class AlbumListAdapter : RecyclerView.Adapter<AlbumListAdapter.ViewHolder>() {
                 Glide.with(root.context)
                     .load(url)
                     .placeholder(R.drawable.ic_glide_placeholder)
-                    .centerCrop()
+                    .fitCenter()
                     .into(ivAlbumThumbnail)
 
                 tvAlbumName.text = data.title
