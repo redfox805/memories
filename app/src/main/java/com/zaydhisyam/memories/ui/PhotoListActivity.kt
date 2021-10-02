@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.zaydhisyam.memories.R
 import com.zaydhisyam.memories.data.source.remote.Resource
 import com.zaydhisyam.memories.databinding.ActivityPhotoListBinding
 import com.zaydhisyam.memories.domain.model.Album
 import com.zaydhisyam.memories.ui.adapter.PhotoListAdapter
+import com.zaydhisyam.memories.ui.utils.MyGridSpacingItemDecoration
 import com.zaydhisyam.memories.ui.view_model.PhotoListViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -31,7 +34,16 @@ class PhotoListActivity : AppCompatActivity() {
         }
 
         with(binding.rvPhotoList) {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 3)
+
+            val spacingInPixels = context.resources.getDimensionPixelSize(R.dimen.my_grid_space)
+            addItemDecoration(
+                MyGridSpacingItemDecoration(
+                    spanCount = 3,
+                    spacing = spacingInPixels
+                )
+            )
+
             setHasFixedSize(true)
             adapter = rvAdapter
         }

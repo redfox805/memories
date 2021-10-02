@@ -34,7 +34,7 @@ class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.ViewHolder>() {
 
         fun bind(data: Photo) {
             val url = GlideUrl(
-                data.thumbnailUrl,
+                data.url,
                 LazyHeaders.Builder()
                     .addHeader("User-Agent", "random_user_agent")
                     .build()
@@ -43,7 +43,7 @@ class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.ViewHolder>() {
             Glide.with(binding.root.context)
                 .load(url)
                 .placeholder(R.drawable.ic_glide_placeholder)
-                .centerCrop()
+                .fitCenter()
                 .into(binding.ivPhoto)
         }
     }
