@@ -35,6 +35,8 @@ class DetailUserActivity : AppCompatActivity() {
             address += "City : ${extraUser.address.city}\n"
             address += "Zipcode : ${extraUser.address.zipcode}"
             tvUserAddress.text = address
+
+            tvUserCompany.text = extraUser.company.name
         }
 
         val rvAdapter = AlbumListAdapter()
