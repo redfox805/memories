@@ -2,7 +2,6 @@ package com.zaydhisyam.memories.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.marginTop
 import androidx.recyclerview.widget.RecyclerView
 import com.zaydhisyam.memories.databinding.RvItemPostListBinding
 import com.zaydhisyam.memories.domain.model.Post

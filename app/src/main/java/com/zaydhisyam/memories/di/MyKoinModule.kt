@@ -3,7 +3,6 @@ package com.zaydhisyam.memories.di
 import android.app.Application
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import com.zaydhisyam.memories.ui.view_model.PostListViewModel
 import com.zaydhisyam.memories.data.MyRepository
 import com.zaydhisyam.memories.data.source.remote.RemoteDataSource
 import com.zaydhisyam.memories.data.source.remote.api.ApiService
@@ -13,6 +12,7 @@ import com.zaydhisyam.memories.domain.usecase.MyUseCase
 import com.zaydhisyam.memories.ui.view_model.DetailPostViewModel
 import com.zaydhisyam.memories.ui.view_model.DetailUserViewModel
 import com.zaydhisyam.memories.ui.view_model.PhotoListViewModel
+import com.zaydhisyam.memories.ui.view_model.PostListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module

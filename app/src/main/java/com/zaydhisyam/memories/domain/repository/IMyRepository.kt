@@ -1,8 +1,10 @@
 package com.zaydhisyam.memories.domain.repository
 
 import com.zaydhisyam.memories.data.source.remote.Resource
-import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomPostResponse
-import com.zaydhisyam.memories.domain.model.*
+import com.zaydhisyam.memories.domain.model.Album
+import com.zaydhisyam.memories.domain.model.Comment
+import com.zaydhisyam.memories.domain.model.Photo
+import com.zaydhisyam.memories.domain.model.Post
 import kotlinx.coroutines.flow.Flow
 
 interface IMyRepository {

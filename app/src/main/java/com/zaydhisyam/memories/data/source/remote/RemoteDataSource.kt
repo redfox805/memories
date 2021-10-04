@@ -6,10 +6,10 @@ import com.zaydhisyam.memories.data.source.remote.api.ApiResponse
 import com.zaydhisyam.memories.data.source.remote.api.ApiService
 import com.zaydhisyam.memories.data.source.remote.response_classes.CommentResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.PhotoResponse
-import com.zaydhisyam.memories.data.source.remote.response_classes.UserResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomAlbumResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomPostResponse
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -20,6 +20,7 @@ class RemoteDataSource(private val apiService: ApiService) {
     suspend fun getCustomPostList()
             : Flow<ApiResponse<List<CustomPostResponse>>> =
         flow {
+            Log.d("TAG", "Flow in DS - current context: ${currentCoroutineContext()}")
             try {
                 val userList = apiService.getUserList()
                 val postList = apiService.getPostList()

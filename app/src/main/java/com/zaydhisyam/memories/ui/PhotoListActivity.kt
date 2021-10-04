@@ -1,12 +1,10 @@
 package com.zaydhisyam.memories.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.zaydhisyam.memories.R
 import com.zaydhisyam.memories.data.source.remote.Resource
@@ -54,21 +52,25 @@ class PhotoListActivity : AppCompatActivity() {
 
         val viewModel: PhotoListViewModel by viewModel()
 
-        viewModel.getPhotoListPerAlbum(albumId = extraAlbum.id)
+        viewModel.setPhotoListPerAlbumLiveData(albumId = extraAlbum.id)
+
+        viewModel.photoList
             .observe(this, { photoListResponse ->
-                when (photoListResponse) {
-                    is Resource.Loading -> binding.progressCircular.visibility = View.VISIBLE
-                    is Resource.Success -> {
-                        binding.progressCircular.visibility = View.GONE
-                        rvAdapter.setAdapterListData(photoListResponse.data)
-                    }
-                    is Resource.Error -> {
-                        binding.progressCircular.visibility = View.GONE
-                        Snackbar.make(
-                            binding.root,
-                            photoListResponse.errorMessage,
-                            Snackbar.LENGTH_SHORT
-                        ).show()
+                photoListResponse?.let {
+                    when (it) {
+                        is Resource.Loading -> binding.progressCircular.visibility = View.VISIBLE
+                        is Resource.Success -> {
+                            binding.progressCircular.visibility = View.GONE
+                            rvAdapter.setAdapterListData(it.data)
+                        }
+                        is Resource.Error -> {
+                            binding.progressCircular.visibility = View.GONE
+                            Snackbar.make(
+                                binding.root,
+                                it.errorMessage,
+                                Snackbar.LENGTH_SHORT
+                            ).show()
+                        }
                     }
                 }
             })

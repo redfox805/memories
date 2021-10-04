@@ -1,10 +1,9 @@
 package com.zaydhisyam.memories.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.zaydhisyam.memories.data.source.remote.Resource
@@ -37,7 +36,7 @@ class PostListActivity : AppCompatActivity() {
 
         val postListViewModel: PostListViewModel by viewModel()
 
-        postListViewModel.getPostList()
+        postListViewModel.postList
             .observe(this, { postListResponse ->
                 when (postListResponse) {
                     is Resource.Loading -> binding.progressCircular.visibility = View.VISIBLE

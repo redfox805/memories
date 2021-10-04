@@ -3,8 +3,6 @@ package com.zaydhisyam.memories.data
 import com.zaydhisyam.memories.data.source.remote.response_classes.PostResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.UserResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomPostResponse
-import com.zaydhisyam.memories.domain.model.Post
-import com.zaydhisyam.memories.domain.model.User
 
 object DataUtils {
 

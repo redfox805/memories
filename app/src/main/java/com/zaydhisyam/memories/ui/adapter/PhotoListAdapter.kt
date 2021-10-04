@@ -8,7 +8,6 @@ import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.LazyHeaders
 import com.zaydhisyam.memories.R
 import com.zaydhisyam.memories.databinding.RvItemPhotoListBinding
-import com.zaydhisyam.memories.domain.model.Album
 import com.zaydhisyam.memories.domain.model.Photo
 
 class PhotoListAdapter : RecyclerView.Adapter<PhotoListAdapter.ViewHolder>() {

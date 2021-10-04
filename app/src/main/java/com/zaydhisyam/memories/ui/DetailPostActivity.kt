@@ -1,12 +1,11 @@
 package com.zaydhisyam.memories.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
-import com.zaydhisyam.memories.R
 import com.zaydhisyam.memories.data.source.remote.Resource
 import com.zaydhisyam.memories.databinding.ActivityDetailPostBinding
 import com.zaydhisyam.memories.domain.model.Post
@@ -41,7 +40,9 @@ class DetailPostActivity : AppCompatActivity() {
 
         val viewModel: DetailPostViewModel by viewModel()
 
-        viewModel.getCommentListPerPost(postId = extraPost.id)
+        viewModel.setCommentListPerPostLiveData(postId = extraPost.id)
+
+        viewModel.commentListPerPost
             .observe(this, { commentListResponse ->
                 when (commentListResponse) {
                     is Resource.Loading -> binding.progressCircular.visibility = View.VISIBLE
