@@ -1,4 +1,4 @@
-package com.zaydhisyam.memories
+package com.zaydhisyam.memories.data.source.remote.api
 
 import com.zaydhisyam.memories.data.source.remote.response_classes.*
 

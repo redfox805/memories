@@ -1,4 +1,4 @@
-package com.zaydhisyam.memories
+package com.zaydhisyam.memories.data.source.remote
 
 import com.zaydhisyam.memories.data.DataUtils
 import com.zaydhisyam.memories.data.source.remote.api.ApiResponse
@@ -8,7 +8,7 @@ import com.zaydhisyam.memories.data.source.remote.response_classes.PhotoResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomAlbumResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomPostResponse
 
-object DataSourceFakeResponse {
+object RemoteDataSourceFakeResponse {
 
     suspend fun getCustomPostList(apiService: ApiService)
             : ApiResponse<List<CustomPostResponse>> {

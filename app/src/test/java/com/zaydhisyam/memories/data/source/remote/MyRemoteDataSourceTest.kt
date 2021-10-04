@@ -1,6 +1,7 @@
-package com.zaydhisyam.memories
+package com.zaydhisyam.memories.data.source.remote
 
-import com.zaydhisyam.memories.data.source.remote.RemoteDataSource
+import com.zaydhisyam.memories.CoroutineTestRule
+import com.zaydhisyam.memories.data.source.remote.api.MyFakeApiService
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -30,7 +31,7 @@ class MyRemoteDataSourceTest {
 
     @Test
     fun `getCustomPostList should success`() = coroutinesTestRule.testDispatcher.runBlockingTest {
-        val expected = DataSourceFakeResponse.getCustomPostList(apiService = apiService)
+        val expected = RemoteDataSourceFakeResponse.getCustomPostList(apiService = apiService)
 
         val result = remoteDataSource.getCustomPostList().single()
 
@@ -41,7 +42,7 @@ class MyRemoteDataSourceTest {
     @Test
     fun `getCommentListPerPost should success`() =
         coroutinesTestRule.testDispatcher.runBlockingTest {
-            val expected = DataSourceFakeResponse.getCommentListPerPost(
+            val expected = RemoteDataSourceFakeResponse.getCommentListPerPost(
                 apiService = apiService,
                 postId = 0
             )
@@ -55,7 +56,7 @@ class MyRemoteDataSourceTest {
     @Test
     fun `getCustomAlbumListPerUser should success`() =
         coroutinesTestRule.testDispatcher.runBlockingTest {
-            val expected = DataSourceFakeResponse.getCustomAlbumListPerUser(
+            val expected = RemoteDataSourceFakeResponse.getCustomAlbumListPerUser(
                 apiService = apiService,
                 userId = 0
             )
@@ -69,7 +70,7 @@ class MyRemoteDataSourceTest {
     @Test
     fun `getPhotoListPerAlbum should success`() =
         coroutinesTestRule.testDispatcher.runBlockingTest {
-            val expected = DataSourceFakeResponse.getPhotoListPerAlbum(
+            val expected = RemoteDataSourceFakeResponse.getPhotoListPerAlbum(
                 apiService = apiService,
                 albumId = 0
             )
