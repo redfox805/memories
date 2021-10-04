@@ -2,6 +2,7 @@ package com.zaydhisyam.memories.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,8 @@ class DetailUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityDetailUserBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Log.d("TAG", "DetailUserActivity onCreate: called")
 
         val extraUser: User = intent.getParcelableExtra(EXTRA_USER)!!
 
@@ -58,21 +61,19 @@ class DetailUserActivity : AppCompatActivity() {
 
         viewModel.albumListPerUser
             .observe(this, { albumListResponse ->
-                albumListResponse?.let {
-                    when (it) {
-                        is Resource.Loading -> binding.progressCircular.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            binding.progressCircular.visibility = View.GONE
-                            rvAdapter.setAdapterListData(it.data)
-                        }
-                        is Resource.Error -> {
-                            binding.progressCircular.visibility = View.GONE
-                            Snackbar.make(
-                                binding.root,
-                                it.errorMessage,
-                                Snackbar.LENGTH_SHORT
-                            ).show()
-                        }
+                when (albumListResponse) {
+                    is Resource.Loading -> binding.progressCircular.visibility = View.VISIBLE
+                    is Resource.Success -> {
+                        binding.progressCircular.visibility = View.GONE
+                        rvAdapter.setAdapterListData(albumListResponse.data)
+                    }
+                    is Resource.Error -> {
+                        binding.progressCircular.visibility = View.GONE
+                        Snackbar.make(
+                            binding.root,
+                            albumListResponse.errorMessage,
+                            Snackbar.LENGTH_SHORT
+                        ).show()
                     }
                 }
             })

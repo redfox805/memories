@@ -2,6 +2,7 @@ package com.zaydhisyam.memories.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,8 @@ class DetailPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityDetailPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Log.d("TAG", "DetailPostActivity onCreate: called")
 
         val extraPost: Post = intent.getParcelableExtra(EXTRA_POST)!!
 

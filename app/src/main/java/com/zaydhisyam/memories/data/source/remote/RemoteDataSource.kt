@@ -1,6 +1,7 @@
 package com.zaydhisyam.memories.data.source.remote
 
-import android.util.Log
+import com.zaydhisyam.memories.coroutines.MyDefaultDispatcherProvider
+import com.zaydhisyam.memories.coroutines.MyDispatcherProvider
 import com.zaydhisyam.memories.data.DataUtils
 import com.zaydhisyam.memories.data.source.remote.api.ApiResponse
 import com.zaydhisyam.memories.data.source.remote.api.ApiService
@@ -8,19 +9,20 @@ import com.zaydhisyam.memories.data.source.remote.response_classes.CommentRespon
 import com.zaydhisyam.memories.data.source.remote.response_classes.PhotoResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomAlbumResponse
 import com.zaydhisyam.memories.data.source.remote.response_classes.custom.CustomPostResponse
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import java.net.UnknownHostException
 
-class RemoteDataSource(private val apiService: ApiService) {
+class RemoteDataSource(
+    private val apiService: ApiService,
+    private val myDispatchers: MyDispatcherProvider = MyDefaultDispatcherProvider()
+) {
 
     suspend fun getCustomPostList()
             : Flow<ApiResponse<List<CustomPostResponse>>> =
         flow {
-            Log.d("TAG", "Flow in DS - current context: ${currentCoroutineContext()}")
+//            Log.d("TAG", "Flow in DS - current context: ${currentCoroutineContext()}")
             try {
                 val userList = apiService.getUserList()
                 val postList = apiService.getPostList()
@@ -34,7 +36,7 @@ class RemoteDataSource(private val apiService: ApiService) {
 
                 emit(ApiResponse.Error(errorMessage))
             }
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(myDispatchers.IO)
 
     suspend fun getCommentListPerPost(postId: Int)
             : Flow<ApiResponse<List<CommentResponse>>> =
@@ -50,7 +52,7 @@ class RemoteDataSource(private val apiService: ApiService) {
 
                 emit(ApiResponse.Error(errorMessage))
             }
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(myDispatchers.IO)
 
     suspend fun getCustomAlbumListPerUser(userId: Int)
             : Flow<ApiResponse<List<CustomAlbumResponse>>> =
@@ -78,7 +80,7 @@ class RemoteDataSource(private val apiService: ApiService) {
 
                 emit(ApiResponse.Error(errorMessage))
             }
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(myDispatchers.IO)
 
     suspend fun getPhotoListPerAlbum(albumId: Int)
             : Flow<ApiResponse<List<PhotoResponse>>> =
@@ -94,5 +96,5 @@ class RemoteDataSource(private val apiService: ApiService) {
 
                 emit(ApiResponse.Error(errorMessage))
             }
-        }.flowOn(Dispatchers.IO)
+        }.flowOn(myDispatchers.IO)
 }

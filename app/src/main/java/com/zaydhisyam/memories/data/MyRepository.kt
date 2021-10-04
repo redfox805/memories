@@ -23,7 +23,7 @@ class MyRepository(
             emit(Resource.Loading)
             when (val apiResponse = remoteDataSource.getCustomPostList().single()) {
                 is ApiResponse.Success -> {
-                    Log.d("TAG", "Flow in when - current context: ${currentCoroutineContext()}")
+//                    Log.d("TAG", "Flow in when - current context: ${currentCoroutineContext()}")
                     emit(
                         Resource.Success(
                             apiResponse.data.map { customPostResponse ->

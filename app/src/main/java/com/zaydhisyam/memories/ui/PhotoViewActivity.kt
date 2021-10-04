@@ -1,6 +1,7 @@
 package com.zaydhisyam.memories.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
@@ -15,6 +16,8 @@ class PhotoViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityPhotoViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Log.d("TAG", "PhotoViewActivity onCreate: called")
 
         val extraPhoto: Photo = intent.getParcelableExtra(EXTRA_PHOTO)!!
 

@@ -2,6 +2,7 @@ package com.zaydhisyam.memories.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,8 @@ class PostListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityPostListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Log.d("TAG", "PostListActivity onCreate: called")
 
         val rvAdapter = PostListAdapter()
 
@@ -39,7 +42,10 @@ class PostListActivity : AppCompatActivity() {
         postListViewModel.postList
             .observe(this, { postListResponse ->
                 when (postListResponse) {
-                    is Resource.Loading -> binding.progressCircular.visibility = View.VISIBLE
+                    is Resource.Loading -> {
+                        Log.d("TAG", "PostListActivity onCreate: resource.Loading class called")
+                        binding.progressCircular.visibility = View.VISIBLE
+                    }
                     is Resource.Success -> {
                         binding.progressCircular.visibility = View.GONE
                         rvAdapter.setAdapterListData(postListResponse.data)

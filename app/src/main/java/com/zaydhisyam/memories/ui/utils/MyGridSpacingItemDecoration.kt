@@ -5,8 +5,8 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * @originallyFrom github.com/tatocaster
- * @repo gist.github.com/liangzhitao/e57df3c3232ee446d464#gistcomment-2199559
+ * originally from:
+ * gist.github.com/liangzhitao/e57df3c3232ee446d464#gistcomment-2199559
  */
 
 class MyGridSpacingItemDecoration(

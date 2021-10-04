@@ -46,5 +46,7 @@ dependencies {
     implementation jetpack_libraries
     implementation dp_inject_libraries
 
+    testImplementation test_libraries
+
     api api_libraries
 }
