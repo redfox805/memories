@@ -1,7 +1,7 @@
 # Memories
 An https://jsonplaceholder.typicode.com/ 's android consumer app featured with Kotlin + Clean Architecture + Testing (unit + instrument test)
 
-## Complete Feature
+## Current Feature
 * Kotlin
 * Kotlin Coroutines
 * Jetpack Lifecycle Component, MVVM
