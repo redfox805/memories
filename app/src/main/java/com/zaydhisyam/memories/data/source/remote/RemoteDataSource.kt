@@ -1,6 +1,5 @@
 package com.zaydhisyam.memories.data.source.remote
 
-import com.zaydhisyam.memories.android_test.EspressoIdlingResource
 import com.zaydhisyam.memories.coroutines.MyDefaultDispatcherProvider
 import com.zaydhisyam.memories.coroutines.MyDispatcherProvider
 import com.zaydhisyam.memories.data.DataUtils
@@ -23,21 +22,25 @@ class RemoteDataSource(
     suspend fun getCustomPostList()
             : Flow<ApiResponse<List<CustomPostResponse>>> =
         flow {
-            EspressoIdlingResource.increment()
+            /**
+             * comment espresso before do unit testing
+             * uncomment before do instrument testing
+             */
+//            EspressoIdlingResource.increment()
 //            Log.d("TAG", "Flow in DS - current context: ${currentCoroutineContext()}")
             try {
                 val userList = apiService.getUserList()
                 val postList = apiService.getPostList()
                 val customPostList = DataUtils.createCustomPostList(userList, postList)
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Success(customPostList))
             } catch (ex: Exception) {
                 var errorMessage = ex.toString()
                 if (ex is UnknownHostException)
                     errorMessage = "No internet connection"
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Error(errorMessage))
             }
         }.flowOn(myDispatchers.IO)
@@ -45,18 +48,18 @@ class RemoteDataSource(
     suspend fun getCommentListPerPost(postId: Int)
             : Flow<ApiResponse<List<CommentResponse>>> =
         flow {
-            EspressoIdlingResource.increment()
+            //EspressoIdlingResource.increment()
             try {
                 val commentList = apiService.getCommentListPerPost(postId)
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Success(commentList))
             } catch (ex: Exception) {
                 var errorMessage = ex.toString()
                 if (ex is UnknownHostException)
                     errorMessage = "No internet connection"
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Error(errorMessage))
             }
         }.flowOn(myDispatchers.IO)
@@ -64,7 +67,7 @@ class RemoteDataSource(
     suspend fun getCustomAlbumListPerUser(userId: Int)
             : Flow<ApiResponse<List<CustomAlbumResponse>>> =
         flow {
-            EspressoIdlingResource.increment()
+//            EspressoIdlingResource.increment()
             try {
                 val albumList = apiService.getAlbumListPerUser(userId)
                 val customAlbumList = arrayListOf<CustomAlbumResponse>()
@@ -80,14 +83,14 @@ class RemoteDataSource(
                     customAlbumList.add(customAlbum)
                 }
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Success(customAlbumList))
             } catch (ex: Exception) {
                 var errorMessage = ex.toString()
                 if (ex is UnknownHostException)
                     errorMessage = "No internet connection"
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Error(errorMessage))
             }
         }.flowOn(myDispatchers.IO)
@@ -95,18 +98,18 @@ class RemoteDataSource(
     suspend fun getPhotoListPerAlbum(albumId: Int)
             : Flow<ApiResponse<List<PhotoResponse>>> =
         flow {
-            EspressoIdlingResource.increment()
+//            EspressoIdlingResource.increment()
             try {
                 val photoList = apiService.getPhotoListPerAlbum(albumId)
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Success(photoList))
             } catch (ex: Exception) {
                 var errorMessage = ex.toString()
                 if (ex is UnknownHostException)
                     errorMessage = "No internet connection"
 
-                EspressoIdlingResource.decrement()
+//                EspressoIdlingResource.decrement()
                 emit(ApiResponse.Error(errorMessage))
             }
         }.flowOn(myDispatchers.IO)
