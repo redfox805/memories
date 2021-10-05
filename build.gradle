@@ -74,7 +74,8 @@ buildscript {
                 "androidx.arch.core:core-testing:$core_testing_ver",
                 "org.mockito:mockito-inline:$mockito_inline_ver",
                 "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_kotlin_ver",
-                "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_coroutines_ver"
+                "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlin_coroutines_ver",
+                "androidx.test:core:1.4.0"
         ]
     }
 
