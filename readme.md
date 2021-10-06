@@ -4,10 +4,11 @@ An https://jsonplaceholder.typicode.com/ 's android consumer app featured with K
 ## Current Feature
 * Kotlin
 * Kotlin Coroutines
-* Jetpack Lifecycle Component, MVVM
+* MVVM
+* Flow & Live Data
 * Koin
 * Clean Architecture
-* Unit testing on:
+* Unit testing on
 • Http Client (Api Service)
 • Remote Data Source
 • Repository
@@ -16,5 +17,5 @@ An https://jsonplaceholder.typicode.com/ 's android consumer app featured with K
 
 ## Future Feature
 * End to end testing
-* Local Data Source (Room)
+* Local Data Source (Room) with Network Bound Resource layer (hmm maybe)
 * Paging
