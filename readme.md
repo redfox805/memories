@@ -6,12 +6,15 @@ An https://jsonplaceholder.typicode.com/ 's android consumer app featured with K
 * Kotlin Coroutines
 * Jetpack Lifecycle Component, MVVM
 * Koin
-* Clean Architecture (Repository, Usecase) 
-* Unit testing on Remote Data Source, Repository, and ViewModel
+* Clean Architecture
+* Unit testing on:
+• Http Client (Api Service)
+• Remote Data Source
+• Repository
+• ViewModel
 * Instrument testing
 
 ## Future Feature
-* Unit testing on Http Client (Api Service)
 * End to end testing
 * Local Data Source (Room)
 * Paging
