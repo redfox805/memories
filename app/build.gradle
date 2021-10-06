@@ -19,6 +19,10 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"https://jsonplaceholder.typicode.com/"'
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -36,6 +40,12 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
     }
 }
 
